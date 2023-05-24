@@ -1,0 +1,24 @@
+<div class="container">
+  <h2 class="text-center">Lista de Tareas</h2>
+
+  <form [formGroup]="taskForm" (ngSubmit)="addTask()">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Nueva tarea" formControlName="newTask">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </form>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let task of tasks; let i = index">
+      <div class="d-flex align-items-center justify-content-between">
+        <span>{{ task.nombre }}</span> <!-- Modifica para mostrar solo el nombre de la tarea -->
+        <div>
+          <button class="btn btn-sm btn-warning" (click)="editTask(task._id, i)">Editar</button> <!-- Agrega el ID de la tarea -->
+          <button class="btn btn-sm btn-danger" (click)="deleteTask(task._id, i)">Eliminar</button> <!-- Agrega el ID de la tarea -->
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
